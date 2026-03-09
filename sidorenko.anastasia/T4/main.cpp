@@ -22,7 +22,7 @@ void printInfo(const std::vector<std::unique_ptr<Shape>>& shapes)
         const CompositeShape* composite = dynamic_cast<const CompositeShape*>(shapes[i].get());
         if (composite)
         {
-            std::cout << composite->getName() << ", (" << cX << ", " << cY << "), "
+            std::cout << "[" << composite->getName() << ", (" << cX << ", " << cY << "), "
                 << composite->getArea() << ":\n";
 
             const std::vector<std::unique_ptr<Shape>>& innerShapes = composite->getShapes();
@@ -38,11 +38,12 @@ void printInfo(const std::vector<std::unique_ptr<Shape>>& shapes)
                 << innerShapes[innerShapes.size() - 1]->getCenter().x << ", " <<
                 innerShapes[innerShapes.size() - 1]->getCenter().y << "), "
                 << innerShapes[innerShapes.size() - 1]->getArea() << "\n";
+            std::cout << "]\n";
         }
         else
         {
-            std::cout << shapes[i]->getName() << ", (" << cX << ", " << cY << "), "
-                << shapes[i]->getArea() << "\n";
+            std::cout << "[" << shapes[i]->getName() << ", (" << cX << ", " << cY << "), "
+                << shapes[i]->getArea() << "]\n";
         }
     }
 }
